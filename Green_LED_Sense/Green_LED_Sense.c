@@ -18,16 +18,15 @@ int main(void)
 	//Interrupt enabling
 	interrupt_init();
 	
+	//Initialize LEDs
+	LED_sense_init();
+	LED_matrix_init();
+	
 	//ADC enabling
 	ADC_init();
 	
-	//LED control
-	light_ddr |= (1<<light_ddr_spec);
-	
 	//Power Control
 	PRR |= (1<<PRTIM0) | (1<<PRTIM1) | (1<<PRTIM2) | (1<<PRTWI) | (1<<PRUSART0) | (1<<PRSPI);
-	
-	DDRB |= (1<<DDB0);
 	
     while(1)
     {
